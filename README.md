@@ -14,3 +14,5 @@ This converter will have the listed features below:
 4. Filter the currency needed
 5. Convert the currency to another one based on the actual market's value
 6. User interaction through the CLI
+
+In order for the converter to work properly, you'll need to download the Gson dependency and add it to your project. As for right now, I'm using the IntelliJ IDE, so you can follow the next steps to add it.
