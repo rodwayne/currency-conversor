@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 
 public class Converter {
 
-    public Currency convertRequest(int option, double amount) {
+    private String[] selectOption(int option) {
         String baseCode = "", targetCode = "";
 
         switch (option) {
@@ -44,6 +44,13 @@ public class Converter {
                 targetCode = "USD";
             }
         }
+
+        return new String[]{baseCode, targetCode};
+    }
+
+    public Currency convertRequest(int option, double amount) {
+        String[] codes = selectOption(option);
+        String baseCode = codes[0], targetCode = codes[1];
 
         URI urlStr = URI.create("https://v6.exchangerate-api.com/v6/22617e4afb20de9e4b9622c3/pair/" + baseCode + "/" + targetCode  + "/" + amount);
 
