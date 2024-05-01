@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -25,8 +26,6 @@ public class Main {
         do {
             System.out.println(menu);
 
-
-
             try {
                 System.out.print("Selecciona una opción de la lista: ");
                 option = userInput.nextInt();
@@ -48,8 +47,11 @@ public class Main {
                 Currency currency = converter.convertRequest(option, amount);
 
                 System.out.printf("$%.2f [%s] equivale a $%.2f [%s]\n\n", amount, currency.base_code(), currency.conversion_result(), currency.target_code());
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Debes ingresar un número entero válido\n");
+                userInput.next();
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("Error");
             }
 
         } while (option != 9);
