@@ -7,6 +7,24 @@ import java.net.http.HttpResponse;
 
 public class Converter {
 
+    public String menu() {
+        return """
+                ********************************************
+                     Bienvenido al Conversor de Monedas
+                --------------------------------------------
+                1) Dólar ==> Peso argentino
+                2) Peso argentino ==> Dólar
+                3) Dólar ==> Real brasileño
+                4) Real brasileño ==> Dólar
+                5) Dólar ==> Peso colombiano
+                6) Peso colombiano ==> Dólar
+                7) Dólar ==> Peso mexicano
+                8) Peso mexicano ==> Dólar
+                9) Salir
+                0) Mostrar historial de conversiones
+                """;
+    }
+
     private String[] selectOption(int option) {
         String baseCode = "", targetCode = "";
 
@@ -52,7 +70,7 @@ public class Converter {
         String[] codes = selectOption(option);
         String baseCode = codes[0], targetCode = codes[1];
 
-        URI urlStr = URI.create("https://v6.exchangerate-api.com/v6/22617e4afb20de9e4b9622c3/pair/" + baseCode + "/" + targetCode  + "/" + amount);
+        URI urlStr = URI.create("https://v6.exchangerate-api.com/v6/22617e4afb20de9e4b9622c3/pair/" + baseCode + "/" + targetCode + "/" + amount);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
